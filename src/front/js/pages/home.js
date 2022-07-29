@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Home = () => {
@@ -15,8 +15,9 @@ export const Home = () => {
         <Link to="/registro">
           <button className="boton__registro">Registrarse</button>
         </Link>
-
-        <button className="boton__inicio__sesion">Iniciar Sesión</button>
+        <Link to="/InicioSesion">
+          <button className="boton__inicio__sesion">Iniciar Sesión</button>
+        </Link>
       </div>
     </div>
   );
