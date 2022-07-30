@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
+#from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+#import datetime //**
+
 api = Blueprint('api', __name__)
 
 
@@ -16,3 +19,20 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+@api.route('/registro', methods=['POST'])
+def registro(): 
+    body = request.get_json()
+    print(body['email'])
+    one_people = User.query.filter_by(email=body['email']).first()
+    if one_people:
+        return "user ya existe",418
+    else:
+        nuevo_user = User(email=body['email'], password=body['password'], is_active=True)
+        db.session.add(nuevo_user)
+        db.session.commit()
+        
+
+
+    return jsonify(body),201
