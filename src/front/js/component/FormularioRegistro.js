@@ -1,88 +1,89 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/home.css";
 
 export const FormularioRegistro = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { actions } = useContext(Context);
+
+  //useEffect(() => {
+  // console.log(name, email, password);
+  //}, [name, email, password]);
+
   return (
     <div>
-      <form class="row g-3">
-        <div class="col-md-4">
-          <label for="validationDefault01" class="form-label">
-            First name
+      <form
+        className="row g-3"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
+        <div className="col-md-12">
+          <label for="validationDefault01" className="form-label">
+            Name
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="validationDefault01"
-            value="Mark"
             required
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div class="col-md-4">
-          <label for="validationDefault02" class="form-label">
-            Last name
-          </label>
-          <input
-            type="text"
-            class="form-control"
-            id="validationDefault02"
-            value="Otto"
-            required
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
             Email address
           </label>
           <input
             type="email"
-            class="form-control"
+            className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <div id="emailHelp" class="form-text">
+          <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
+        <div className="mb-3">
+          <label for="exampleInputPassword1" className="form-label">
             Password
           </label>
           <input
             type="password"
-            class="form-control"
+            className="form-control"
             id="exampleInputPassword1"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
-            Repeat Password
-          </label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
+            onChange={(e) => setPassword(e.target)}
           />
         </div>
 
-        <div class="col-12">
-          <div class="form-check">
+        <div className="col-12">
+          <div className="form-check">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               value=""
               id="invalidCheck2"
               required
             />
-            <label class="form-check-label" for="invalidCheck2">
+            <label className="form-check-label" for="invalidCheck2">
               Agree to terms and conditions
             </label>
           </div>
         </div>
-        <div class="col-12">
-          <button class="btn btn-primary" type="submit">
-            Submit form
+        <div className="col-12">
+          <button
+            className="btn btn-primary"
+            type="submit"
+            onClick={() => {
+              actions.register(name, email, password);
+            }}
+          >
+            Send
           </button>
         </div>
       </form>
