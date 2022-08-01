@@ -27,12 +27,12 @@ def registro():
     
     one_people = User.query.filter_by(email=body['email']).first()
     if one_people:
-        return jsonify({"user ya existe" }),418
+        return ("user ya existe"),418
     else:
-        nuevo_user = User(email=body['email'], password=body['password'], is_active=True)
+        nuevo_user = User(name=body['name'], email=body['email'], password=body['password'], is_active=True)
         db.session.add(nuevo_user)
         db.session.commit()
         
 
 
-    return jsonify(body),201
+    return ("usurio registrado"),201

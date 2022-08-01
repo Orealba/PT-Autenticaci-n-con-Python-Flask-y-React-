@@ -57,7 +57,7 @@ export const FormularioRegistro = () => {
             type="password"
             className="form-control"
             id="exampleInputPassword1"
-            onChange={(e) => setPassword(e.target)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
