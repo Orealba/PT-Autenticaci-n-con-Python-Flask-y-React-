@@ -3,8 +3,7 @@ import { Context } from "../store/appContext";
 
 import "../../styles/home.css";
 
-export const FormularioRegistro = () => {
-  const [name, setName] = useState("");
+export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { actions } = useContext(Context);
@@ -21,20 +20,7 @@ export const FormularioRegistro = () => {
           e.preventDefault();
         }}
       >
-        <div className="col-md-12">
-          <label for="validationDefault01" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="validationDefault01"
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-
-        <div className="mb-3">
+        <div className="mb-6">
           <label for="exampleInputEmail1" className="form-label">
             Email address
           </label>
@@ -49,7 +35,7 @@ export const FormularioRegistro = () => {
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div className="mb-3">
+        <div className="mb-6">
           <label for="exampleInputPassword1" className="form-label">
             Password
           </label>
@@ -80,7 +66,7 @@ export const FormularioRegistro = () => {
             className="btn btn-primary"
             type="submit"
             onClick={() => {
-              actions.register(name, email, password);
+              actions.register(email, password);
             }}
           >
             Send

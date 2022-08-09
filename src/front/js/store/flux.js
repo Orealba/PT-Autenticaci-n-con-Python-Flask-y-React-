@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-0bwgwyjza7e.ws-eu54.gitpod.io/api/registro",
+          "https://3001-orealba-ptautenticacinc-r05rc3atbtw.ws-eu59.gitpod.io//api/registro",
           requestOptions
         )
           .then((response) => response.text())
