@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
+import "../../styles/Registro.css";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -14,8 +15,9 @@ export const Register = () => {
 
   return (
     <div>
+      <h1 className="titulo__registrarse__registro">Registrarse</h1>
       <form
-        className="row g-3"
+        className="row g-3 formulario__registro"
         onSubmit={(e) => {
           e.preventDefault();
         }}
@@ -72,8 +74,18 @@ export const Register = () => {
             Send
           </button>
         </div>
+
+        <div>
+          <Link to="/">
+            <button className="boton_home">Volver al inicio</button>
+          </Link>
+
+          <Link to="/InicioSesion">
+            <button className="boton__inicio__sesion">Iniciar Sesión</button>
+          </Link>
+        </div>
       </form>
     </div>
   );
 };
-export default FormularioRegistro;
+export default Register;
