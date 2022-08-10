@@ -38,14 +38,15 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-ohdrtnphw97.ws-eu59.gitpod.io/api/login",
+          "https://3001-orealba-ptautenticacinc-58qe01ybp3g.ws-eu59.gitpod.io/api/login",
           requestOptions
         )
           .then((response) => response.json())
           .then((result) => {
-            // console.log(result.access_token);
+            console.log(result.access_token);
             // aquí vas a redirigir al inicio o saludo
-            console.log(result.mensaje);
+            alert(result.mensaje);
+            sessionStorage.setItem("token", result.access_token);
           })
           .catch((error) => console.log("error", error));
       },
@@ -67,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-ohdrtnphw97.ws-eu59.gitpod.io/api/register",
+          "https://3001-orealba-ptautenticacinc-58qe01ybp3g.ws-eu59.gitpod.io/api/register",
           requestOptions
         )
           .then((response) => response.text())
