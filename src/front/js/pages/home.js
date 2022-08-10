@@ -15,7 +15,7 @@ export const Home = () => {
         <Link to="/registro">
           <button className="boton__registro">Registrarse</button>
         </Link>
-        <Link to="/InicioSesion">
+        <Link to="/iniciosesion">
           <button className="boton__inicio__sesion">Iniciar Sesión</button>
         </Link>
       </div>

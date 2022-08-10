@@ -1,16 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
-import "../../styles/Registro.css";
 
-export const Register = () => {
+export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { actions } = useContext(Context);
-  useEffect(() => {
-    console.log(email, password);
-  }, [email, password]);
+  // useEffect(() => {
+  //   console.log(email, password);
+  // }, [email, password]);
 
   return (
     <div>
@@ -66,7 +65,7 @@ export const Register = () => {
             className="btn btn-primary"
             type="submit"
             onClick={() => {
-              actions.register(email, password);
+              actions.login(email, password);
             }}
           >
             Send
@@ -76,4 +75,4 @@ export const Register = () => {
     </div>
   );
 };
-export default Register;
+export default Login;

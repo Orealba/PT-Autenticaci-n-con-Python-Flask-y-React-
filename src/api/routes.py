@@ -10,7 +10,6 @@ import datetime
 
 api = Blueprint('api', __name__)
 
-
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -20,11 +19,9 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
-
 @api.route('/register', methods=['POST'])
 def register(): 
     body = request.get_json()
-    
     one_people = User.query.filter_by(email=body['email']).first()
     if one_people:
         return jsonify("user ya existe") ,418
@@ -32,7 +29,21 @@ def register():
         nuevo_user = User(email=body['email'], password=body['password'], is_active=True)
         db.session.add(nuevo_user)
         db.session.commit()
-        
-
-
     return jsonify(body),201
+
+
+@api.route('/login', methods=['POST'])
+def login():
+    body= request.get_json()
+    one_people = User.query.filter_by(email=body['email'], password=body["password"]).first()
+    if one_people:
+        token = create_access_token(identity=body['email'])
+        return jsonify({"access_token":token, "mensaje": "inicio de sesion correcto"}),200
+    else:
+        return jsonify("no existe usuario registrado"),418
+
+
+@api.route('/privada', methods=['GET'])
+@jwt_required()  
+def privada():   
+    return jsonify({"mensaje":"tienes permiso para entrar", "permiso":True})   
