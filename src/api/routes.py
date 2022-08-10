@@ -27,7 +27,7 @@ def register():
     
     one_people = User.query.filter_by(email=body['email']).first()
     if one_people:
-        return "user ya existe",418
+        return jsonify("user ya existe") ,418
     else:
         nuevo_user = User(email=body['email'], password=body['password'], is_active=True)
         db.session.add(nuevo_user)

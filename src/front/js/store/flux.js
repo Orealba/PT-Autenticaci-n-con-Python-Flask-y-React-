@@ -21,12 +21,11 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
-      register: (name, email, password) => {
+      register: (email, password) => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-          name: name,
           email: email,
           password: password,
         });
@@ -39,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-r05rc3atbtw.ws-eu59.gitpod.io//api/registro",
+          "https://3001-orealba-ptautenticacinc-c7pwwfgssgv.ws-eu59.gitpod.io/api/register",
           requestOptions
         )
           .then((response) => response.text())

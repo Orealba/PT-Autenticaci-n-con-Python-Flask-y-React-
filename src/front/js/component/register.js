@@ -8,10 +8,9 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { actions } = useContext(Context);
-
-  //useEffect(() => {
-  // console.log(name, email, password);
-  //}, [name, email, password]);
+  useEffect(() => {
+    console.log(email, password);
+  }, [email, password]);
 
   return (
     <div>
