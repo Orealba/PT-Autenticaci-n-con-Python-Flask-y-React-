@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      permiso: false,
+      user: "",
       message: null,
       demo: [
         {
@@ -21,6 +23,32 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
+      privado: () => {
+        var myHeaders = new Headers();
+        myHeaders.append(
+          "Authorization",
+          `Bearer ${sessionStorage.getItem("token")}`
+        );
+
+        var requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+          redirect: "follow",
+        };
+
+        fetch(
+          "https://3001-orealba-ptautenticacinc-vw1wp2dfd7d.ws-eu59.gitpod.io/api/privada",
+          requestOptions
+        )
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            setStore({ permiso: result.permiso });
+            setStore({ user: result.email });
+          })
+          .catch((error) => console.log("error", error));
+      },
+
       login: (email, password) => {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -38,7 +66,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-58qe01ybp3g.ws-eu59.gitpod.io/api/login",
+          "https://3001-orealba-ptautenticacinc-vw1wp2dfd7d.ws-eu59.gitpod.io/api/login",
           requestOptions
         )
           .then((response) => response.json())
@@ -68,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         };
 
         fetch(
-          "https://3001-orealba-ptautenticacinc-58qe01ybp3g.ws-eu59.gitpod.io/api/register",
+          "https://3001-orealba-ptautenticacinc-vw1wp2dfd7d.ws-eu59.gitpod.io/api/register",
           requestOptions
         )
           .then((response) => response.text())

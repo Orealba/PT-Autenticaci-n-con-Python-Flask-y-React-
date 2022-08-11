@@ -5,7 +5,7 @@ import React from "react";
 export const Privada = () => {
   return (
     <div>
-      <Profile />;
+      <Profile />
     </div>
   );
 };

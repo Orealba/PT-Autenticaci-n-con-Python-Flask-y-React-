@@ -46,4 +46,5 @@ def login():
 @api.route('/privada', methods=['GET'])
 @jwt_required()  
 def privada():   
-    return jsonify({"mensaje":"tienes permiso para entrar", "permiso":True})   
+    identidad = get_jwt_identity()
+    return jsonify({"mensaje":"Bienvenido, tienes permiso para entrar", "permiso":True, "email":identidad})   
