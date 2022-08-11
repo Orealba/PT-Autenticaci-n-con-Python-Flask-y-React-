@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
@@ -21,6 +23,10 @@ const getState = ({ getStore, getActions, setStore }) => {
       // Use getActions to call a function within a fuction
       exampleFunction: () => {
         getActions().changeColor(0, "green");
+      },
+
+      cerrarSesion: () => {
+        sessionStorage.setItem("token", "");
       },
 
       privado: () => {
@@ -73,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           .then((result) => {
             console.log(result.access_token);
             // aquí vas a redirigir al inicio o saludo
-            alert(result.mensaje);
+
             sessionStorage.setItem("token", result.access_token);
           })
           .catch((error) => console.log("error", error));

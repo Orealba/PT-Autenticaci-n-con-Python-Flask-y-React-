@@ -61,15 +61,17 @@ export const Login = () => {
           </div>
         </div>
         <div className="col-12">
-          <button
-            className="btn btn-primary"
-            type="submit"
-            onClick={() => {
-              actions.login(email, password);
-            }}
-          >
-            Send
-          </button>
+          <Link to="/privada">
+            <button
+              className="btn btn-primary"
+              type="submit"
+              onClick={() => {
+                actions.login(email, password);
+              }}
+            >
+              Send
+            </button>
+          </Link>
         </div>
       </form>
     </div>

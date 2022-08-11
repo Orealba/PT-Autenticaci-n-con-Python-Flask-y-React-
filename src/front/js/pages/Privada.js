@@ -1,8 +1,10 @@
 import Profile from "../component/Profile.js";
 
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const Privada = () => {
+  const { actions } = useContext(Context);
   return (
     <div>
       <Profile />
